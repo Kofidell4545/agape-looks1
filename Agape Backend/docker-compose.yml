@@ -1,0 +1,172 @@
+# ===========================
+# AGAPE LOOKS Backend Docker Compose
+# Development and local testing environment
+# ===========================
+
+version: '3.8'
+
+services:
+  # ===========================
+  # PostgreSQL Database Service
+  # ===========================
+  postgres:
+    image: postgres:15-alpine
+    container_name: agape_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${DB_NAME:-agape_looks}
+      POSTGRES_USER: ${DB_USER:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-postgres}
+      POSTGRES_INITDB_ARGS: "-E UTF8 --locale=en_US.UTF-8"
+    ports:
+      - "${DB_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./scripts/init-db.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - agape_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-postgres}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ===========================
+  # Redis Cache Service
+  # ===========================
+  redis:
+    image: redis:7-alpine
+    container_name: agape_redis
+    restart: unless-stopped
+    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD:-}
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - agape_network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ===========================
+  # Application Service
+  # ===========================
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: agape_app
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      NODE_ENV: ${NODE_ENV:-development}
+      DB_HOST: postgres
+      REDIS_HOST: redis
+    ports:
+      - "${PORT:-3000}:3000"
+      - "${METRICS_PORT:-9090}:9090"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - ./logs:/app/logs
+      - ./keys:/app/keys
+      - ./uploads:/app/uploads
+    networks:
+      - agape_network
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000/healthz', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # ===========================
+  # Nginx Reverse Proxy (Optional)
+  # ===========================
+  nginx:
+    image: nginx:alpine
+    container_name: agape_nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - app
+    networks:
+      - agape_network
+    profiles:
+      - with-nginx
+
+  # ===========================
+  # Redis Commander (Development Tool)
+  # ===========================
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    container_name: agape_redis_commander
+    restart: unless-stopped
+    environment:
+      REDIS_HOSTS: local:redis:6379
+      REDIS_PASSWORD: ${REDIS_PASSWORD:-}
+    ports:
+      - "8081:8081"
+    depends_on:
+      - redis
+    networks:
+      - agape_network
+    profiles:
+      - dev-tools
+
+  # ===========================
+  # PgAdmin (Development Tool)
+  # ===========================
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: agape_pgadmin
+    restart: unless-stopped
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL:-admin@agapelooks.com}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD:-admin}
+      PGADMIN_LISTEN_PORT: 80
+    ports:
+      - "8080:80"
+    depends_on:
+      - postgres
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    networks:
+      - agape_network
+    profiles:
+      - dev-tools
+
+# ===========================
+# Network Configuration
+# ===========================
+networks:
+  agape_network:
+    driver: bridge
+    name: agape_network
+
+# ===========================
+# Volume Configuration
+# ===========================
+volumes:
+  postgres_data:
+    driver: local
+    name: agape_postgres_data
+  redis_data:
+    driver: local
+    name: agape_redis_data
+  pgadmin_data:
+    driver: local
+    name: agape_pgadmin_data

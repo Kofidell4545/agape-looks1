@@ -1,0 +1,184 @@
+npm warn Unknown project config "shamefully-hoist". This will stop working in the next major version of npm.
+npm warn Unknown project config "strict-peer-dependencies". This will stop working in the next major version of npm.
+npm warn Unknown project config "auto-install-peers". This will stop working in the next major version of npm.
+npm warn Unknown project config "store-dir". This will stop working in the next major version of npm.
+npm warn Unknown project config "package-import-method". This will stop working in the next major version of npm.
+
+> agape-looks-backend@1.0.0 seed
+> node src/database/seeder.js
+
+2025-11-21 12:45:24 [[32minfo[39m]: Starting database seeding... {"service":"AGAPE LOOKS Backend","environment":"development"}
+2025-11-21 12:45:24 [[32minfo[39m]: Seeding products... {"service":"AGAPE LOOKS Backend","environment":"development"}
+2025-11-21 12:45:24 [[32minfo[39m]: Database connection pool created {"service":"AGAPE LOOKS Backend","environment":"development","host":"localhost","port":5432,"database":"agape_looks","poolMin":2,"poolMax":10}
+Attempting to insert product KNT-001...
+2025-11-21 12:45:24 [[31merror[39m]: Error releasing database client {"service":"AGAPE LOOKS Backend","environment":"development","error":"column \"slug\" of relation \"products\" does not exist"}
+2025-11-21 12:45:24 [[31merror[39m]: Database query error {"service":"AGAPE LOOKS Backend","environment":"development","error":"column \"slug\" of relation \"products\" does not exist","query":"\n        INSERT INTO products (\n          sku, title, slug, short_description, full_story, price, currency,\n          weave_origin, care_instructions, dimensions, tags, inventory,\n          dispatch_time, rating, review_count, is_featured, is_limited, is_active\n        ) VALUES (\n          $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18\n        ) RETURNING id, title\n      ","params":["KNT-001","Royal Asante Kente","royal-asante-kente","Traditional Asante pattern with gold and black weave","This exquisite Kente cloth represents the rich heritage of the Asante people. Handwoven by master craftsmen in Bonwire, Ghana, each thread tells a story of royalty and tradition.",450,"GHS","Bonwire, Ashanti Region","Dry clean only. Store in a cool, dry place away from direct sunlight.","{\"width\":200,\"length\":300,\"unit\":\"cm\"}",["Handwoven","Traditional","Royal","Asante"],8,"2-4 business days",4.8,24,true,false,true],"stack":"error: column \"slug\" of relation \"products\" does not exist\n    at /Users/nhyiraba_kofi/Desktop/NOTHING MAIN/websites/Agape Looks/Agape Backend/node_modules/.pnpm/pg-pool@3.10.1_pg@8.16.3/node_modules/pg-pool/index.js:45:11\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async query (file:///Users/nhyiraba_kofi/Desktop/NOTHING%20MAIN/websites/Agape%20Looks/Agape%20Backend/src/config/database.js:128:20)\n    at async seedProducts (file:///Users/nhyiraba_kofi/Desktop/NOTHING%20MAIN/websites/Agape%20Looks/Agape%20Backend/src/database/seeder.js:158:22)\n    at async seed (file:///Users/nhyiraba_kofi/Desktop/NOTHING%20MAIN/websites/Agape%20Looks/Agape%20Backend/src/database/seeder.js:228:5)"}
+Error seeding product KNT-001: error: column "slug" of relation "products" does not exist
+    at /Users/nhyiraba_kofi/Desktop/NOTHING MAIN/websites/Agape Looks/Agape Backend/node_modules/.pnpm/pg-pool@3.10.1_pg@8.16.3/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async query (file:///Users/nhyiraba_kofi/Desktop/NOTHING%20MAIN/websites/Agape%20Looks/Agape%20Backend/src/config/database.js:128:20)
+    at async seedProducts (file:///Users/nhyiraba_kofi/Desktop/NOTHING%20MAIN/websites/Agape%20Looks/Agape%20Backend/src/database/seeder.js:158:22)
+    at async seed (file:///Users/nhyiraba_kofi/Desktop/NOTHING%20MAIN/websites/Agape%20Looks/Agape%20Backend/src/database/seeder.js:228:5) {
+  length: 125,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: undefined,
+  position: '55',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_target.c',
+  line: '1075',
+  routine: 'checkInsertTargets'
+}
+2025-11-21 12:45:24 [[31merror[39m]: Error seeding product KNT-001: column "slug" of relation "products" does not exist {"service":"AGAPE LOOKS Backend","environment":"development","length":125,"name":"error","severity":"ERROR","code":"42703","position":"55","file":"parse_target.c","line":"1075","routine":"checkInsertTargets","stack":"error: column \"slug\" of relation \"products\" does not exist\n    at /Users/nhyiraba_kofi/Desktop/NOTHING MAIN/websites/Agape Looks/Agape Backend/node_modules/.pnpm/pg-pool@3.10.1_pg@8.16.3/node_modules/pg-pool/index.js:45:11\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async query (file:///Users/nhyiraba_kofi/Desktop/NOTHING%20MAIN/websites/Agape%20Looks/Agape%20Backend/src/config/database.js:128:20)\n    at async seedProducts (file:///Users/nhyiraba_kofi/Desktop/NOTHING%20MAIN/websites/Agape%20Looks/Agape%20Backend/src/database/seeder.js:158:22)\n    at async seed (file:///Users/nhyiraba_kofi/Desktop/NOTHING%20MAIN/websites/Agape%20Looks/Agape%20Backend/src/database/seeder.js:228:5)"}
+Attempting to insert product KNT-002...
+2025-11-21 12:45:24 [[31merror[39m]: Error releasing database client {"service":"AGAPE LOOKS Backend","environment":"development","error":"column \"slug\" of relation \"products\" does not exist"}
+2025-11-21 12:45:24 [[31merror[39m]: Database query error {"service":"AGAPE LOOKS Backend","environment":"development","error":"column \"slug\" of relation \"products\" does not exist","query":"\n        INSERT INTO products (\n          sku, title, slug, short_description, full_story, price, currency,\n          weave_origin, care_instructions, dimensions, tags, inventory,\n          dispatch_time, rating, review_count, is_featured, is_limited, is_active\n        ) VALUES (\n          $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18\n        ) RETURNING id, title\n      ","params":["KNT-002","Ewe Kente Masterpiece","ewe-kente-masterpiece","Intricate Ewe design with vibrant multicolor patterns","Crafted by skilled Ewe weavers from the Volta Region, this Kente showcases the distinctive geometric patterns and vibrant colors that characterize Ewe textiles.",520,"GHS","Kpetoe, Volta Region","Hand wash with cold water. Air dry flat.","{\"width\":180,\"length\":280,\"unit\":\"cm\"}",["Handwoven","Traditional","Ewe","Multicolor"],5,"3-5 business days",4.9,18,true,false,true],"stack":"error: column \"slug\" of relation \"products\" does not exist\n    at /Users/nhyiraba_kofi/Desktop/NOTHING MAIN/websites/Agape Looks/Agape Backend/node_modules/.pnpm/pg-pool@3.10.1_pg@8.16.3/node_modules/pg-pool/index.js:45:11\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async query (file:///Users/nhyiraba_kofi/Desktop/NOTHING%20MAIN/websites/Agape%20Looks/Agape%20Backend/src/config/database.js:128:20)\n    at async seedProducts (file:///Users/nhyiraba_kofi/Desktop/NOTHING%20MAIN/websites/Agape%20Looks/Agape%20Backend/src/database/seeder.js:158:22)\n    at async seed (file:///Users/nhyiraba_kofi/Desktop/NOTHING%20MAIN/websites/Agape%20Looks/Agape%20Backend/src/database/seeder.js:228:5)"}
+Error seeding product KNT-002: error: column "slug" of relation "products" does not exist
+    at /Users/nhyiraba_kofi/Desktop/NOTHING MAIN/websites/Agape Looks/Agape Backend/node_modules/.pnpm/pg-pool@3.10.1_pg@8.16.3/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async query (file:///Users/nhyiraba_kofi/Desktop/NOTHING%20MAIN/websites/Agape%20Looks/Agape%20Backend/src/config/database.js:128:20)
+    at async seedProducts (file:///Users/nhyiraba_kofi/Desktop/NOTHING%20MAIN/websites/Agape%20Looks/Agape%20Backend/src/database/seeder.js:158:22)
+    at async seed (file:///Users/nhyiraba_kofi/Desktop/NOTHING%20MAIN/websites/Agape%20Looks/Agape%20Backend/src/database/seeder.js:228:5) {
+  length: 125,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: undefined,
+  position: '55',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_target.c',
+  line: '1075',
+  routine: 'checkInsertTargets'
+}
+2025-11-21 12:45:24 [[31merror[39m]: Error seeding product KNT-002: column "slug" of relation "products" does not exist {"service":"AGAPE LOOKS Backend","environment":"development","length":125,"name":"error","severity":"ERROR","code":"42703","position":"55","file":"parse_target.c","line":"1075","routine":"checkInsertTargets","stack":"error: column \"slug\" of relation \"products\" does not exist\n    at /Users/nhyiraba_kofi/Desktop/NOTHING MAIN/websites/Agape Looks/Agape Backend/node_modules/.pnpm/pg-pool@3.10.1_pg@8.16.3/node_modules/pg-pool/index.js:45:11\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async query (file:///Users/nhyiraba_kofi/Desktop/NOTHING%20MAIN/websites/Agape%20Looks/Agape%20Backend/src/config/database.js:128:20)\n    at async seedProducts (file:///Users/nhyiraba_kofi/Desktop/NOTHING%20MAIN/websites/Agape%20Looks/Agape%20Backend/src/database/seeder.js:158:22)\n    at async seed (file:///Users/nhyiraba_kofi/Desktop/NOTHING%20MAIN/websites/Agape%20Looks/Agape%20Backend/src/database/seeder.js:228:5)"}
+Attempting to insert product KNT-003...
+2025-11-21 12:45:24 [[31merror[39m]: Error releasing database client {"service":"AGAPE LOOKS Backend","environment":"development","error":"column \"slug\" of relation \"products\" does not exist"}
+2025-11-21 12:45:24 [[31merror[39m]: Database query error {"service":"AGAPE LOOKS Backend","environment":"development","error":"column \"slug\" of relation \"products\" does not exist","query":"\n        INSERT INTO products (\n          sku, title, slug, short_description, full_story, price, currency,\n          weave_origin, care_instructions, dimensions, tags, inventory,\n          dispatch_time, rating, review_count, is_featured, is_limited, is_active\n        ) VALUES (\n          $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18\n        ) RETURNING id, title\n      ","params":["KNT-003","Contemporary Gold Kente","contemporary-gold-kente","Modern interpretation of classic Kente with gold accents","A contemporary take on traditional Kente, blending modern aesthetics with time-honored weaving techniques. Perfect for special occasions.",680,"GHS","Bonwire, Ashanti Region","Dry clean recommended. Keep away from moisture.","{\"width\":220,\"length\":320,\"unit\":\"cm\"}",["Modern","Handwoven","Gold","Premium"],3,"2-3 business days",5,12,true,true,true],"stack":"error: column \"slug\" of relation \"products\" does not exist\n    at /Users/nhyiraba_kofi/Desktop/NOTHING MAIN/websites/Agape Looks/Agape Backend/node_modules/.pnpm/pg-pool@3.10.1_pg@8.16.3/node_modules/pg-pool/index.js:45:11\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async query (file:///Users/nhyiraba_kofi/Desktop/NOTHING%20MAIN/websites/Agape%20Looks/Agape%20Backend/src/config/database.js:128:20)\n    at async seedProducts (file:///Users/nhyiraba_kofi/Desktop/NOTHING%20MAIN/websites/Agape%20Looks/Agape%20Backend/src/database/seeder.js:158:22)\n    at async seed (file:///Users/nhyiraba_kofi/Desktop/NOTHING%20MAIN/websites/Agape%20Looks/Agape%20Backend/src/database/seeder.js:228:5)"}
+Error seeding product KNT-003: error: column "slug" of relation "products" does not exist
+    at /Users/nhyiraba_kofi/Desktop/NOTHING MAIN/websites/Agape Looks/Agape Backend/node_modules/.pnpm/pg-pool@3.10.1_pg@8.16.3/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async query (file:///Users/nhyiraba_kofi/Desktop/NOTHING%20MAIN/websites/Agape%20Looks/Agape%20Backend/src/config/database.js:128:20)
+    at async seedProducts (file:///Users/nhyiraba_kofi/Desktop/NOTHING%20MAIN/websites/Agape%20Looks/Agape%20Backend/src/database/seeder.js:158:22)
+    at async seed (file:///Users/nhyiraba_kofi/Desktop/NOTHING%20MAIN/websites/Agape%20Looks/Agape%20Backend/src/database/seeder.js:228:5) {
+  length: 125,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: undefined,
+  position: '55',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_target.c',
+  line: '1075',
+  routine: 'checkInsertTargets'
+}
+2025-11-21 12:45:24 [[31merror[39m]: Error seeding product KNT-003: column "slug" of relation "products" does not exist {"service":"AGAPE LOOKS Backend","environment":"development","length":125,"name":"error","severity":"ERROR","code":"42703","position":"55","file":"parse_target.c","line":"1075","routine":"checkInsertTargets","stack":"error: column \"slug\" of relation \"products\" does not exist\n    at /Users/nhyiraba_kofi/Desktop/NOTHING MAIN/websites/Agape Looks/Agape Backend/node_modules/.pnpm/pg-pool@3.10.1_pg@8.16.3/node_modules/pg-pool/index.js:45:11\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async query (file:///Users/nhyiraba_kofi/Desktop/NOTHING%20MAIN/websites/Agape%20Looks/Agape%20Backend/src/config/database.js:128:20)\n    at async seedProducts (file:///Users/nhyiraba_kofi/Desktop/NOTHING%20MAIN/websites/Agape%20Looks/Agape%20Backend/src/database/seeder.js:158:22)\n    at async seed (file:///Users/nhyiraba_kofi/Desktop/NOTHING%20MAIN/websites/Agape%20Looks/Agape%20Backend/src/database/seeder.js:228:5)"}
+Attempting to insert product KNT-004...
+2025-11-21 12:45:24 [[31merror[39m]: Error releasing database client {"service":"AGAPE LOOKS Backend","environment":"development","error":"column \"slug\" of relation \"products\" does not exist"}
+2025-11-21 12:45:24 [[31merror[39m]: Database query error {"service":"AGAPE LOOKS Backend","environment":"development","error":"column \"slug\" of relation \"products\" does not exist","query":"\n        INSERT INTO products (\n          sku, title, slug, short_description, full_story, price, currency,\n          weave_origin, care_instructions, dimensions, tags, inventory,\n          dispatch_time, rating, review_count, is_featured, is_limited, is_active\n        ) VALUES (\n          $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18\n        ) RETURNING id, title\n      ","params":["KNT-004","Traditional Wedding Kente","traditional-wedding-kente","Ceremonial Kente perfect for weddings and celebrations","This ceremonial Kente is specially woven for weddings and important celebrations. Its intricate patterns symbolize love, unity, and prosperity.",850,"GHS","Bonwire, Ashanti Region","Professional dry cleaning only. Store in breathable fabric bag.","{\"width\":250,\"length\":350,\"unit\":\"cm\"}",["Wedding","Ceremonial","Premium","Traditional"],4,"5-7 business days",4.9,8,false,true,true],"stack":"error: column \"slug\" of relation \"products\" does not exist\n    at /Users/nhyiraba_kofi/Desktop/NOTHING MAIN/websites/Agape Looks/Agape Backend/node_modules/.pnpm/pg-pool@3.10.1_pg@8.16.3/node_modules/pg-pool/index.js:45:11\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async query (file:///Users/nhyiraba_kofi/Desktop/NOTHING%20MAIN/websites/Agape%20Looks/Agape%20Backend/src/config/database.js:128:20)\n    at async seedProducts (file:///Users/nhyiraba_kofi/Desktop/NOTHING%20MAIN/websites/Agape%20Looks/Agape%20Backend/src/database/seeder.js:158:22)\n    at async seed (file:///Users/nhyiraba_kofi/Desktop/NOTHING%20MAIN/websites/Agape%20Looks/Agape%20Backend/src/database/seeder.js:228:5)"}
+Error seeding product KNT-004: error: column "slug" of relation "products" does not exist
+    at /Users/nhyiraba_kofi/Desktop/NOTHING MAIN/websites/Agape Looks/Agape Backend/node_modules/.pnpm/pg-pool@3.10.1_pg@8.16.3/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async query (file:///Users/nhyiraba_kofi/Desktop/NOTHING%20MAIN/websites/Agape%20Looks/Agape%20Backend/src/config/database.js:128:20)
+    at async seedProducts (file:///Users/nhyiraba_kofi/Desktop/NOTHING%20MAIN/websites/Agape%20Looks/Agape%20Backend/src/database/seeder.js:158:22)
+    at async seed (file:///Users/nhyiraba_kofi/Desktop/NOTHING%20MAIN/websites/Agape%20Looks/Agape%20Backend/src/database/seeder.js:228:5) {
+  length: 125,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: undefined,
+  position: '55',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_target.c',
+  line: '1075',
+  routine: 'checkInsertTargets'
+}
+2025-11-21 12:45:24 [[31merror[39m]: Error seeding product KNT-004: column "slug" of relation "products" does not exist {"service":"AGAPE LOOKS Backend","environment":"development","length":125,"name":"error","severity":"ERROR","code":"42703","position":"55","file":"parse_target.c","line":"1075","routine":"checkInsertTargets","stack":"error: column \"slug\" of relation \"products\" does not exist\n    at /Users/nhyiraba_kofi/Desktop/NOTHING MAIN/websites/Agape Looks/Agape Backend/node_modules/.pnpm/pg-pool@3.10.1_pg@8.16.3/node_modules/pg-pool/index.js:45:11\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async query (file:///Users/nhyiraba_kofi/Desktop/NOTHING%20MAIN/websites/Agape%20Looks/Agape%20Backend/src/config/database.js:128:20)\n    at async seedProducts (file:///Users/nhyiraba_kofi/Desktop/NOTHING%20MAIN/websites/Agape%20Looks/Agape%20Backend/src/database/seeder.js:158:22)\n    at async seed (file:///Users/nhyiraba_kofi/Desktop/NOTHING%20MAIN/websites/Agape%20Looks/Agape%20Backend/src/database/seeder.js:228:5)"}
+Attempting to insert product KNT-005...
+2025-11-21 12:45:24 [[31merror[39m]: Error releasing database client {"service":"AGAPE LOOKS Backend","environment":"development","error":"column \"slug\" of relation \"products\" does not exist"}
+2025-11-21 12:45:24 [[31merror[39m]: Database query error {"service":"AGAPE LOOKS Backend","environment":"development","error":"column \"slug\" of relation \"products\" does not exist","query":"\n        INSERT INTO products (\n          sku, title, slug, short_description, full_story, price, currency,\n          weave_origin, care_instructions, dimensions, tags, inventory,\n          dispatch_time, rating, review_count, is_featured, is_limited, is_active\n        ) VALUES (\n          $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18\n        ) RETURNING id, title\n      ","params":["KNT-005","Classic Blue & White Kente","classic-blue-white-kente","Elegant blue and white traditional pattern","A timeless classic featuring the serene combination of blue and white. This pattern represents peace, harmony, and purity in Ghanaian culture.",420,"GHS","Kpetoe, Volta Region","Hand wash cold. Line dry in shade.","{\"width\":190,\"length\":290,\"unit\":\"cm\"}",["Traditional","Blue","Handwoven","Classic"],10,"2-4 business days",4.7,15,false,false,true],"stack":"error: column \"slug\" of relation \"products\" does not exist\n    at /Users/nhyiraba_kofi/Desktop/NOTHING MAIN/websites/Agape Looks/Agape Backend/node_modules/.pnpm/pg-pool@3.10.1_pg@8.16.3/node_modules/pg-pool/index.js:45:11\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async query (file:///Users/nhyiraba_kofi/Desktop/NOTHING%20MAIN/websites/Agape%20Looks/Agape%20Backend/src/config/database.js:128:20)\n    at async seedProducts (file:///Users/nhyiraba_kofi/Desktop/NOTHING%20MAIN/websites/Agape%20Looks/Agape%20Backend/src/database/seeder.js:158:22)\n    at async seed (file:///Users/nhyiraba_kofi/Desktop/NOTHING%20MAIN/websites/Agape%20Looks/Agape%20Backend/src/database/seeder.js:228:5)"}
+Error seeding product KNT-005: error: column "slug" of relation "products" does not exist
+    at /Users/nhyiraba_kofi/Desktop/NOTHING MAIN/websites/Agape Looks/Agape Backend/node_modules/.pnpm/pg-pool@3.10.1_pg@8.16.3/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async query (file:///Users/nhyiraba_kofi/Desktop/NOTHING%20MAIN/websites/Agape%20Looks/Agape%20Backend/src/config/database.js:128:20)
+    at async seedProducts (file:///Users/nhyiraba_kofi/Desktop/NOTHING%20MAIN/websites/Agape%20Looks/Agape%20Backend/src/database/seeder.js:158:22)
+    at async seed (file:///Users/nhyiraba_kofi/Desktop/NOTHING%20MAIN/websites/Agape%20Looks/Agape%20Backend/src/database/seeder.js:228:5) {
+  length: 125,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: undefined,
+  position: '55',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_target.c',
+  line: '1075',
+  routine: 'checkInsertTargets'
+}
+2025-11-21 12:45:24 [[31merror[39m]: Error seeding product KNT-005: column "slug" of relation "products" does not exist {"service":"AGAPE LOOKS Backend","environment":"development","length":125,"name":"error","severity":"ERROR","code":"42703","position":"55","file":"parse_target.c","line":"1075","routine":"checkInsertTargets","stack":"error: column \"slug\" of relation \"products\" does not exist\n    at /Users/nhyiraba_kofi/Desktop/NOTHING MAIN/websites/Agape Looks/Agape Backend/node_modules/.pnpm/pg-pool@3.10.1_pg@8.16.3/node_modules/pg-pool/index.js:45:11\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async query (file:///Users/nhyiraba_kofi/Desktop/NOTHING%20MAIN/websites/Agape%20Looks/Agape%20Backend/src/config/database.js:128:20)\n    at async seedProducts (file:///Users/nhyiraba_kofi/Desktop/NOTHING%20MAIN/websites/Agape%20Looks/Agape%20Backend/src/database/seeder.js:158:22)\n    at async seed (file:///Users/nhyiraba_kofi/Desktop/NOTHING%20MAIN/websites/Agape%20Looks/Agape%20Backend/src/database/seeder.js:228:5)"}
+Attempting to insert product LACE-001...
+2025-11-21 12:45:24 [[31merror[39m]: Error releasing database client {"service":"AGAPE LOOKS Backend","environment":"development","error":"column \"slug\" of relation \"products\" does not exist"}
+2025-11-21 12:45:24 [[31merror[39m]: Database query error {"service":"AGAPE LOOKS Backend","environment":"development","error":"column \"slug\" of relation \"products\" does not exist","query":"\n        INSERT INTO products (\n          sku, title, slug, short_description, full_story, price, currency,\n          weave_origin, care_instructions, dimensions, tags, inventory,\n          dispatch_time, rating, review_count, is_featured, is_limited, is_active\n        ) VALUES (\n          $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18\n        ) RETURNING id, title\n      ","params":["LACE-001","Beaded Lace Black","beaded-lace-black","Elegant black beaded lace with intricate details","This luxurious black beaded lace features exquisite craftsmanship, perfect for evening wear and special occasions. The delicate beads catch the light beautifully, adding a touch of glamour to any outfit.",1200,"GHS","Imported","Dry clean only. Handle with care.","{\"width\":150,\"length\":500,\"unit\":\"cm\"}",["Beaded Lace","Black","Luxury","Evening Wear"],15,"1-2 business days",5,3,true,false,true],"stack":"error: column \"slug\" of relation \"products\" does not exist\n    at /Users/nhyiraba_kofi/Desktop/NOTHING MAIN/websites/Agape Looks/Agape Backend/node_modules/.pnpm/pg-pool@3.10.1_pg@8.16.3/node_modules/pg-pool/index.js:45:11\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async query (file:///Users/nhyiraba_kofi/Desktop/NOTHING%20MAIN/websites/Agape%20Looks/Agape%20Backend/src/config/database.js:128:20)\n    at async seedProducts (file:///Users/nhyiraba_kofi/Desktop/NOTHING%20MAIN/websites/Agape%20Looks/Agape%20Backend/src/database/seeder.js:158:22)\n    at async seed (file:///Users/nhyiraba_kofi/Desktop/NOTHING%20MAIN/websites/Agape%20Looks/Agape%20Backend/src/database/seeder.js:228:5)"}
+Error seeding product LACE-001: error: column "slug" of relation "products" does not exist
+    at /Users/nhyiraba_kofi/Desktop/NOTHING MAIN/websites/Agape Looks/Agape Backend/node_modules/.pnpm/pg-pool@3.10.1_pg@8.16.3/node_modules/pg-pool/index.js:45:11
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async query (file:///Users/nhyiraba_kofi/Desktop/NOTHING%20MAIN/websites/Agape%20Looks/Agape%20Backend/src/config/database.js:128:20)
+    at async seedProducts (file:///Users/nhyiraba_kofi/Desktop/NOTHING%20MAIN/websites/Agape%20Looks/Agape%20Backend/src/database/seeder.js:158:22)
+    at async seed (file:///Users/nhyiraba_kofi/Desktop/NOTHING%20MAIN/websites/Agape%20Looks/Agape%20Backend/src/database/seeder.js:228:5) {
+  length: 125,
+  severity: 'ERROR',
+  code: '42703',
+  detail: undefined,
+  hint: undefined,
+  position: '55',
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'parse_target.c',
+  line: '1075',
+  routine: 'checkInsertTargets'
+}
+2025-11-21 12:45:24 [[31merror[39m]: Error seeding product LACE-001: column "slug" of relation "products" does not exist {"service":"AGAPE LOOKS Backend","environment":"development","length":125,"name":"error","severity":"ERROR","code":"42703","position":"55","file":"parse_target.c","line":"1075","routine":"checkInsertTargets","stack":"error: column \"slug\" of relation \"products\" does not exist\n    at /Users/nhyiraba_kofi/Desktop/NOTHING MAIN/websites/Agape Looks/Agape Backend/node_modules/.pnpm/pg-pool@3.10.1_pg@8.16.3/node_modules/pg-pool/index.js:45:11\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async query (file:///Users/nhyiraba_kofi/Desktop/NOTHING%20MAIN/websites/Agape%20Looks/Agape%20Backend/src/config/database.js:128:20)\n    at async seedProducts (file:///Users/nhyiraba_kofi/Desktop/NOTHING%20MAIN/websites/Agape%20Looks/Agape%20Backend/src/database/seeder.js:158:22)\n    at async seed (file:///Users/nhyiraba_kofi/Desktop/NOTHING%20MAIN/websites/Agape%20Looks/Agape%20Backend/src/database/seeder.js:228:5)"}
+2025-11-21 12:45:24 [[32minfo[39m]: ✓ Products seeded successfully {"service":"AGAPE LOOKS Backend","environment":"development"}
+2025-11-21 12:45:24 [[32minfo[39m]: ✓ Database seeding completed successfully {"service":"AGAPE LOOKS Backend","environment":"development"}
+2025-11-21 12:45:24 [[32minfo[39m]: Closing database connection pool... {"service":"AGAPE LOOKS Backend","environment":"development"}
+2025-11-21 12:45:24 [[32minfo[39m]: Database connection pool closed successfully {"service":"AGAPE LOOKS Backend","environment":"development"}

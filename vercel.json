@@ -1,7 +1,0 @@
-{
-  "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "cd agape-frontend && npm run build",
-  "devCommand": "cd agape-frontend && npm run dev",
-  "installCommand": "cd agape-frontend && npm install",
-  "outputDirectory": "agape-frontend/.next"
-}
